@@ -1,0 +1,13 @@
+doctype html
+html
+    head
+        title Gallery
+    body
+        h1 Logowanie
+        form(name="signUpForm", action="/auth/signUp", method="post")
+            p
+                input(type="text", name="userName", id="userName", placeholder="login")
+            p
+                input(type="text", name="password", id="password", placeholder="password")
+            p
+                input(type="submit", value="Sign up")
