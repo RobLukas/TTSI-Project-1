@@ -3,11 +3,20 @@ html
     head
         title Gallery
     body
-        h1 Logowanie
-        form(name="signUpForm", action="/auth/signUp", method="post")
+        h1 Rejestracja
+        form(name="signUpForm", action="/Auth/signUp", method="post")
             p
                 input(type="text", name="userName", id="userName", placeholder="login")
             p
                 input(type="text", name="password", id="password", placeholder="password")
             p
                 input(type="submit", value="Sign up")
+
+        h1 Logowanie
+        form(name="signInForm", action="/Auth/signIn", method="post")
+            p
+                input(type="text", name="userName", id="userName", placeholder="login")
+            p
+                input(type="text", name="password", id="password", placeholder="password")
+            p
+                input(type="submit", value="Sign In")
