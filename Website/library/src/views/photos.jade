@@ -2,7 +2,17 @@ doctype html
 html
     head
         title #{title}
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        //- - var p = photos.name
+        //- - var x = photo.path
     body
         h1 #{title}
+        h1= p
+        #photo
+            .script
+                each photo in #{photos}
+                    .photo
+                        h2= photo.name
+                        image(src=photo.path)
         p
             a(href="/auth/profile") Back

@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://<lashoow>:<pirat123123>@ds113915.mlab.com:13915/gallery";
 var url = "mongodb://localhost:27017/galleryDB";
 
 MongoClient.connect(url, function (err, db) {

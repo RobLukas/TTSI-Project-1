@@ -11,4 +11,5 @@ module.exports = function (app) {
     });
 
     require('./strategies/local.strategy')();
+    // require('./strategies/local.strategy.admin')();
 };

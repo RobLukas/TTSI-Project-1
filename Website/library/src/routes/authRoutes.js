@@ -3,35 +3,27 @@ var authRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
 var passport = require('passport');
 
-// var router = function(){
-//     authRouter.route('/signUp')
-//         .post(function (req, res) {
-//             console.log(req.body);
-//             res.send('signUp');
-//             req.login(req.body, function(){
-//                 res.redirect('/auth/profile');
-//             });
-//         });
-//     authRouter.route('/profile')
-//         .get(function(req, res){
-//             res.json(req.user);
-//             res.render('profile');
-//         });
-//     return authRouter;
-// };
-
-// module.exports = router;
-
 authRouter.post('/signUp', function (req, res) {
-    console.log(req.body);
     var url = "mongodb://localhost:27017/galleryDB";
+    // var url = "mongodb://<lashoow>:<pirat123123>@ds113915.mlab.com:13915/gallery";
     mongodb.connect(url, function (err, db) {
         var collection = db.collection('users');
+        var photos = [];
+        photos.push({
+            name: 'obrazek1',
+            path: 'https://nodejs.org/static/images/logos/nodejs-green.png'
+        });
+        photos.push({
+            name: 'obrazek2',
+            path: 'http://www.wst.com.pl/images/kierunki/oprogramowanie/corel.jpg'
+        });
+        var films = [];
         var user = {
             username: req.body.userName,
-            password: req.body.password
+            password: req.body.password,
+            photos: photos,
+            films: films
         };
-
         collection.insert(user, function (err, results) {
             req.login(results, function () {
                 res.redirect('/auth/profile');
@@ -44,7 +36,6 @@ authRouter.post('/signIn', passport.authenticate('local', {
     failureRedirect: '/'
 }), function (req, res) {
     res.redirect('/auth/profile');
-    console.log(id);
 });
 
 authRouter.all('/profile', function (req, res, next) {
@@ -59,9 +50,5 @@ authRouter.get('/profile', function (req, res) {
     // res.json(req.user);
     // res.send(req.params.user);
 });
-
-// authRouter.get('/:username', function (req, res) {
-//     res.send(req.params.user);
-// });
 
 module.exports = authRouter;
