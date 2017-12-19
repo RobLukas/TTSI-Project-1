@@ -1,11 +1,13 @@
 var express = require('express');
 var authRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
+// const mongoose = require('mongoose');
 var passport = require('passport');
+// var userModel = mongoose.model('User');
 
 authRouter.post('/signUp', function (req, res) {
-    var url = "mongodb://localhost:27017/galleryDB";
-    // var url = "mongodb://<lashoow>:<pirat123123>@ds113915.mlab.com:13915/gallery";
+    var url = "mongodb://zolwik:yolo123@ds113915.mlab.com:13915/gallery";
+    // const new_Account = new userModel(req.body).save();
     mongodb.connect(url, function (err, db) {
         var collection = db.collection('users');
         var photos = [];
@@ -46,7 +48,9 @@ authRouter.all('/profile', function (req, res, next) {
 });
 
 authRouter.get('/profile', function (req, res) {
-    res.render('profile');
+    res.render('profile', {
+        photo: req.user.photos
+    });
     // res.json(req.user);
     // res.send(req.params.user);
 });

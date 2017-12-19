@@ -9,7 +9,7 @@ passport.use(new LocalStrategy({
             passwordField: 'password'
         },
         function (username, password, done) {
-            var url = "mongodb://localhost:27017/galleryDB";
+            var url = "mongodb://zolwik:yolo123@ds113915.mlab.com:13915/gallery";
             mongodb.connect(url, function (err, db) {
                 var collection = db.collection('users');
                 collection.findOne({

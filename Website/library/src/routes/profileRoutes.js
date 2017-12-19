@@ -9,12 +9,12 @@ profileRouter.get('/logout', function (req, res) {
     res.redirect('/');
 });
 
-profileRouter.all('/photos', function (req, res, next) {
-    if (!req.user) {
-        res.redirect('/');
-    }
-    next();
-});
+// profileRouter.all('/photos', function (req, res, next) {
+//     if (!req.user) {
+//         res.redirect('/');
+//     }
+//     next();
+// });
 
 profileRouter.all('/videos', function (req, res, next) {
     if (!req.user) {
@@ -28,15 +28,6 @@ profileRouter.all('/settings', function (req, res, next) {
         res.redirect('/');
     }
     next();
-});
-
-profileRouter.get('/photos', function (req, res) {
-    res.render('photos', {
-        title: 'Photos',
-        photos: req.user
-    });
-    console.log(req.user[0].films);
-    // console.log(req.user.photos);
 });
 
 profileRouter.get('/videos', function (req, res) {

@@ -7,12 +7,18 @@ html
         //- - var x = photo.path
     body
         h1 #{title}
-        h1= p
+        //- h2 #{photos.name}
+        //- h2 #{photos.path}
+        //- h1= p
         #photo
             .script
-                each photo in #{photos}
+                var inews = JSON.parse('!{photos}');
+                each photos in inews
                     .photo
-                        h2= photo.name
-                        image(src=photo.path)
+                        h2 photos.name
+                        image(src=photos.path)
+
+        p
+            a(href="/auth/profile/photos/add") Dodaj zdjęcie
         p
             a(href="/auth/profile") Back
