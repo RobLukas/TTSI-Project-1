@@ -31,6 +31,7 @@ profileRouter.all('/settings', function (req, res, next) {
 });
 
 profileRouter.get('/videos', function (req, res) {
+    console.log(req.params.user);
     res.render('videos', {
         title: 'Videos'
     });

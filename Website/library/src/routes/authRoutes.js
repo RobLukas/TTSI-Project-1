@@ -49,7 +49,7 @@ authRouter.all('/profile', function (req, res, next) {
 
 authRouter.get('/profile', function (req, res) {
     res.render('profile', {
-        photo: req.user.photos
+        photos: req.user.photos
     });
     // res.json(req.user);
     // res.send(req.params.user);

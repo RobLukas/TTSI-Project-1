@@ -1,5 +1,8 @@
 var express = require('express');
 var photoRouter = express.Router();
+var mongodb = require('mongodb').MongoClient;
+
+
 
 photoRouter.all('/', function (req, res, next) {
     if (!req.user) {
@@ -25,7 +28,8 @@ photoRouter.all('/add/save', function (req, res, next) {
 photoRouter.get('/', function (req, res) {
     res.render('photos', {
         title: 'Photo',
-        photos: JSON.stringify(req.user.photos),
+        // photos: JSON.stringify(req.user.photos)
+        // photos: photos
     });
 });
 
