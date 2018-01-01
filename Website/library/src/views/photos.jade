@@ -2,21 +2,14 @@ doctype html
 html
     head
         title #{title}
-        link(rel='stylesheet', href='/stylesheets/style.css')
-        //- - var p = photos.name
-        //- - var x = photo.path
+        link(rel='stylesheet', href='/css/style.css')
     body
         h1 #{title}
-        //- h2 #{photos.name}
-        //- h2 #{photos.path}
-        //- h1= p
         #photo
-            .script
-                var inews = JSON.parse('!{photos}');
-                each photos in inews
-                    .photo
-                        h2 #{photos.name}
-                        image(src=photos.path)
+            each photos in photo
+                .photo
+                    h2 #{photos.name}
+                    image(src=photos.path)
 
         p
             a(href="/auth/profile/photos/add") Dodaj zdjęcie

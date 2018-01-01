@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-app.use(cookieParser());
+app.use(cookieParser('library'));
 app.use(session({
     secret: 'library',
     // name: 'cookie_name',
@@ -30,6 +30,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
 require('./src/config/passport')(app);
 
 app.set('views', './src/views');

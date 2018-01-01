@@ -1,10 +1,18 @@
 doctype html
 html
     head
-        title Dodawanie
+        title Przekaż zdjęcie
     body
-            h1 Dodaj zdjecie
-            p
-                a(href="/auth/profile/photos/add/save") Dodaj zdjęcie
+            h1 Przekaż zdjęcie
+            p Formularz pozwala na przekazanie zdjęcia
+            form(name="addPhoto", action="/auth/profile/photos/add/save", method="post")
+                p
+                    input(type="text", name="photoName", placeholder="Tytuł")
+                p
+                    input(type="text", name="photoPath", placeholder="Adres url")
+                p
+                    input(type="submit", value="Wyślij")
             p
                 a(href="/auth/profile/photos") Cofnij
+            p
+                a(href="/auth/profile/photos/add/save") save
