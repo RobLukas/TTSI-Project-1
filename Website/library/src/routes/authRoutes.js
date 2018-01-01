@@ -69,29 +69,19 @@ authRouter.post('/profile/photos/add/save', function (req, res){
     // console.log(req.session.passport.user.id);
     mongodb.connect(url, function (err, db) {
         var collection = db.collection('users');
-        collection.findOne({
-            user: req.session.passport.user
-        },
-        function(err, result){
-            if(err){
-                // console.log(err);
+            var add = {
+                name: req.body.photoName,
+                path: req.body.photoPath
             }
-            console.log(result);
+            collection.findOneAndUpdate({
+                username: req.user.ops[0].username
+            }, { $push: {photos: add} });
+            return;
         });
-        var add = {
-            name: req.body.photoName,
-            path: req.body.photoPath
-        }
+
         // console.log(user.photos);
         // userPhoto.photos = add;
-        user.photos.push(add);
-        collection.update(user, req.user, function (err, results) {
-            req.login(results, function () {
-                res.redirect('/auth/profile/photos');
-            });
-            
-        });
-    });
 });
+
 
 module.exports = authRouter;
