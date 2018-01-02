@@ -1,6 +1,5 @@
 var express = require('express');
 var profileRouter = express.Router();
-var mongodb = require('mongodb').MongoClient;
 
 profileRouter.get('/logout', function (req, res) {
     req.session.destroy();
@@ -9,12 +8,25 @@ profileRouter.get('/logout', function (req, res) {
     res.redirect('/');
 });
 
-// profileRouter.all('/photos', function (req, res, next) {
-//     if (!req.user) {
-//         res.redirect('/');
-//     }
-//     next();
-// });
+profileRouter.all('/', function (req, res, next) {
+    if (!req.user) {
+        res.redirect('/');
+    }
+    next();
+});
+
+profileRouter.get('/', function (req, res) {
+    res.render('profile', {
+        user: req.user
+    });
+});
+
+profileRouter.all('/photos', function (req, res, next) {
+    if (!req.user) {
+        res.redirect('/');
+    }
+    next();
+});
 
 profileRouter.all('/videos', function (req, res, next) {
     if (!req.user) {
