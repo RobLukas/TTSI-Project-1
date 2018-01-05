@@ -23,7 +23,6 @@ app.use(session({
 }));
 
 require('./src/config/passport')(app);
-require('./src/config/passport-admin')(app);
 
 app.set('views', './src/views');
 // app.set('views', './src/viewsAdmin');

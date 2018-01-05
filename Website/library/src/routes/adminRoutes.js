@@ -7,8 +7,8 @@ var ObjectId = require('mongodb').ObjectID;
 var url = "mongodb://zolwik:yolo123@ds113915.mlab.com:13915/gallery";
 
 adminRouter.all('/panel', function(req, res, next){
-    if(!req.user){
-        res.redirect('/admin');
+    if(!req.user || !req.user.isAdmin){
+        res.redirect('/');
     }
     next();
 });
@@ -48,6 +48,9 @@ adminRouter.get('/panel', function(req, res){
 adminRouter.post('/signIn', passport.authenticate('local', {
     failureRedirect: '/'
 }), function (req, res) {
+    if(!req.user.isAdmin) {
+        console.log("er");
+    }
     res.redirect('/admin/panel');
 });
 

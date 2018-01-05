@@ -35,7 +35,11 @@ authRouter.post('/signUp', function (req, res) {
 authRouter.post('/signIn', passport.authenticate('local', {
     failureRedirect: '/'
 }), function (req, res) {
-    res.redirect('/auth/profile');
+    if (req.user.isAdmin) {
+        res.redirect('/admin/panel');
+    }
+    else
+        res.redirect('/auth/profile');
 });
 
 module.exports = authRouter;

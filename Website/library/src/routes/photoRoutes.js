@@ -58,7 +58,8 @@ photoRouter.post('/add/save', function (req, res){
 photoRouter.get('/delete/:_id', function (req, res){
     mongodb.connect(url, function (err, db) {
         var collection = db.collection('users');
-        collection.remove( { _id: ObjectId(req.params._id) } , function(err, result){
+        
+        collection.remove( { photos: { _id: ObjectId(req.params._id) } } , function(err, result){
             console.log(req.params._id);
             if (!err){
                 res.redirect('/auth/profile/photos');
