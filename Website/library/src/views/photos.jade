@@ -10,6 +10,8 @@ html
                 .photo
                     h2 #{photos.name}
                     image(src=photos.path)
+                    p
+                        a(href="/auth/profile/photos/delete/" + photos._id) Usuń
 
         p
             a(href="/auth/profile/photos/add") Dodaj zdjęcie

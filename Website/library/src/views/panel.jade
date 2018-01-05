@@ -2,5 +2,19 @@ doctype html
 html
     head
         title Admin Panel
+        link(rel='stylesheet', href='/css/style.css')
     body
             h1 Panel
+
+            p
+                a(href="/admin/panel/logout") Wylogowanie
+            p
+                a(href="/admin/panel/create") Utwórz
+
+                each user in users
+                    .list
+                        p ID: #{user._id}
+                        p username: #{user.username}
+                        p password: #{user.password}
+                        p 
+                            a(href="/admin/panel/delete/"+ user._id) Usuń

@@ -1,8 +1,14 @@
 doctype html
 html
     head
-        title #{title}
+        title Ustawienia
     body
         h1 #{title}
+
+        form(name="changePassword", action="/auth/profile/settings/change", method="post")
+            p
+                input(type="text", name="password", id="password", placeholder="Zmień hasło", required)
+            p
+                input(type="submit", value="Zmień")
         p
             a(href="/auth/profile") Back

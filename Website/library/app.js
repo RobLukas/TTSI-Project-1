@@ -2,15 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-// var MongoClient = require('mongodb').MongoClient;
-// var url = "mongodb://zolwik:yolo123@ds113915.mlab.com:13915/gallery";
-
-// require('../library/src/routes/module');
-// MongoClient.connect(url, function (err, db) {
-//     if (err) throw err;
-//     console.log("Database connected!");
-//     db.close();
-// });
 
 var app = express();
 
@@ -32,6 +23,7 @@ app.use(session({
 }));
 
 require('./src/config/passport')(app);
+require('./src/config/passport-admin')(app);
 
 app.set('views', './src/views');
 // app.set('views', './src/viewsAdmin');

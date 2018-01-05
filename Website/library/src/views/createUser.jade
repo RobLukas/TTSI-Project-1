@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        title Admin
+    body
+            h1 Tworzenie użytkownika
+            form(name="createUser", action="/admin/panel/create/add", method="post")
+                p
+                    input(type="email", name="username", placeholder="Email", required)
+                p
+                    input(type="text", name="password", placeholder="hasło", required)
+                p
+                    input(type="submit", value="Stwórz")
+            p
+                a(href="/admin/panel") Cofnij

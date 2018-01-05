@@ -1,5 +1,8 @@
 var express = require('express');
 var profileRouter = express.Router();
+var mongodb = require('mongodb').MongoClient;
+
+var url = "mongodb://zolwik:yolo123@ds113915.mlab.com:13915/gallery";
 
 profileRouter.get('/logout', function (req, res) {
     req.session.destroy();
@@ -28,13 +31,6 @@ profileRouter.all('/photos', function (req, res, next) {
     next();
 });
 
-profileRouter.all('/videos', function (req, res, next) {
-    if (!req.user) {
-        res.redirect('/');
-    }
-    next();
-});
-
 profileRouter.all('/settings', function (req, res, next) {
     if (!req.user) {
         res.redirect('/');
@@ -42,15 +38,22 @@ profileRouter.all('/settings', function (req, res, next) {
     next();
 });
 
-profileRouter.get('/videos', function (req, res) {
-    res.render('videos', {
-        title: 'Videos'
+profileRouter.get('/settings', function (req, res) {
+    res.render('settings', {
+        title: 'Zmiana hasła'
     });
 });
 
-profileRouter.get('/settings', function (req, res) {
-    res.render('settings', {
-        title: 'Settings'
+profileRouter.post('/settings/change', function (req, res) {
+    mongodb.connect(url, function (err, db) {
+        var collection = db.collection('users');
+        collection.findOneAndUpdate({
+            username: req.user.username
+        }, { $set: {password: req.body.password} }, {returnOriginal: false}, function(err, results) {
+            req.login(results.value, function () {
+                res.redirect('/auth/profile');
+            });
+        });
     });
 });
 

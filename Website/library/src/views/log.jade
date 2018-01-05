@@ -6,17 +6,17 @@ html
         h1 Rejestracja
         form(name="signUpForm", action="/Auth/signUp", method="post")
             p
-                input(type="text", name="userName", id="userName", placeholder="login")
+                input(type="email", name="userName", id="userName", placeholder="login", required)
             p
-                input(type="password", name="password", id="password", placeholder="password")
+                input(type="password", name="password", id="password", placeholder="password", required)
             p
                 input(type="submit", value="Sign up")
 
         h1 Logowanie
         form(name="signInForm", action="/Auth/signIn", method="post")
             p
-                input(type="text", name="userName", id="userName", placeholder="login")
+                input(type="email", name="userName", id="userName", placeholder="login", required)
             p
-                input(type="password", name="password", id="password", placeholder="password")
+                input(type="password", name="password", id="password", placeholder="password", required)
             p
                 input(type="submit", value="Sign In")
