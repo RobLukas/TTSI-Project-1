@@ -2,13 +2,19 @@ doctype html
 html
     head
         title Ustawienia
+        //- link(rel='stylesheet', href='/css/profile.css')
+        link(rel='stylesheet', href='/css/login-style.css')
     body
-        h1 #{title}
-
-        form(name="changePassword", action="/auth/profile/settings/change", method="post")
-            p
-                input(type="text", name="password", id="password", placeholder="Zmień hasło", required)
-            p
-                input(type="submit", value="Zmień")
-        p
-            a(href="/auth/profile") Back
+        header
+            
+        div.login-page
+            div.form.setting
+                h1 #{title}
+                form.login-form(name="changePassword", action="/auth/profile/settings/change", method="post")
+                    p
+                        input(type="text", name="password", id="password", placeholder="Zmień hasło", required)
+                    p
+                        input.submit(type="submit", value="Zmień")
+                    p
+                        a(href="/auth/profile")
+                            input.submit(type="button", value="Wstecz")

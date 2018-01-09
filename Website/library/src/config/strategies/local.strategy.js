@@ -18,17 +18,15 @@ passport.use(new LocalStrategy({
                         if (err){
                             return done(err);
                         }
-                        if (!results.username) {
-                            return done(null, false, {
-                                message: 'Incorrect username.'
-                            });
+                        if (!results){
+                            return done(null, false, {message: 'Niepoprawny email'})
                         }
                         if (results.password === password) {
                             var user = results;
-                            done(null, user);
+                            return done(null, user);
                         } else {
-                            done(null, false, {
-                                message: 'Bad password'
+                            return done(null, false, {
+                                message: 'Niepoprawny email/hasło'
                             });
                         }
                     }

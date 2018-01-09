@@ -1,15 +1,23 @@
 body {
-padding: 50px;
-font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 100vh;
+    background: #8DC26F;
+    background: -webkit-linear-gradient(bottom,#8DC26F, #acb3f7);
+    background: -moz-linear-gradient(bottom,#8DC26F, #acb3f7);
+    background: -o-linear-gradient(bottom,#8DC26F, #acb3f7);
+    background: linear-gradient(to bottom,#8DC26F, #acb3f7);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;      
 }
 a { color: #00B7FF; }
 .photo {
 display: inline-block;
 margin: 5px;
 padding: 10px;
-border: 1px solid #eee;
+border: 2px solid #eee;
 border-radius: 5px;
-box-shadow: 0 1px 2px #ddd;
+box-shadow: 0 3px 5px #ddd;
 }
 .photo h2 {
 margin: 0;
@@ -17,15 +25,83 @@ margin-bottom: 5px;
 font-size: 14px;
 font-weight: 200;
 }
-.photo img { height: 150px; }
+.photo img { height: 250px; width: 250px; }
 .list {
     display: inline-block;
     margin: 5px;
+    width: 230px;
+    height: 125px;
     padding: 10px;
     border: 1px solid grey;
     border-radius: 5px;
-    box-shadow: 0 1px 2px rgb(29, 13, 13);
+    box-shadow: 0 2px 4px rgb(29, 13, 13);
 }
 .list p {
     font-size: 14px;
+}
+
+header {
+    margin: 0 auto;
+    padding: 55px;
+    text-align: center;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 250px;
+    width: 250px;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #43A047;;
+}
+
+.photo:hover .overlay {
+    opacity: 1;
+}
+
+.container {
+    position: relative;
+    width: 50%;
+}
+
+.image1 {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.a .space {
+    padding-left: 15px;
+}
+
+.submit {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 150px;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.submit:hover,.form .submit:active,.form .submit:focus {
+    background: #43A047;
 }

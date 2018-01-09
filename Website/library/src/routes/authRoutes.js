@@ -33,7 +33,8 @@ authRouter.post('/signUp', function (req, res) {
 });
 
 authRouter.post('/signIn', passport.authenticate('local', {
-    failureRedirect: '/'
+    failureRedirect: '/',
+    failureMessage: "Invalid username or password"
 }), function (req, res) {
     if (req.user.isAdmin) {
         res.redirect('/admin/panel');

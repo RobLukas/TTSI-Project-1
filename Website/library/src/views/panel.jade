@@ -2,7 +2,7 @@ doctype html
 html
     head
         title Admin Panel
-        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet', href='/css/admin.css')
     body
             h1 Panel
 
@@ -12,9 +12,10 @@ html
                 a(href="/admin/panel/create") Utwórz
 
                 each user in users
-                    .list
-                        p ID: #{user._id}
-                        p username: #{user.username}
-                        p password: #{user.password}
-                        p 
-                            a(href="/admin/panel/delete/"+ user._id) Usuń
+                    if user.username != 'admin@admin'
+                        .list
+                            p ID: #{user._id}
+                            p username: #{user.username}
+                            p password: #{user.password}
+                            p
+                                a(href="/admin/panel/delete/"+ user._id) Usuń

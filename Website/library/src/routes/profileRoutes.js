@@ -8,12 +8,12 @@ profileRouter.get('/logout', function (req, res) {
     req.session.destroy();
     req.logout();
     console.log('Logout success');
-    res.redirect('/');
+    return res.redirect('/');
 });
 
-profileRouter.all('/', function (req, res, next) {
-    if (!req.user) {
-        res.redirect('/');
+profileRouter.use(function (req, res, next){
+    if (!req.user || req.user.isAdmin) {
+        return res.redirect('/');
     }
     next();
 });
@@ -22,20 +22,6 @@ profileRouter.get('/', function (req, res) {
     res.render('profile', {
         user: req.user
     });
-});
-
-profileRouter.all('/photos', function (req, res, next) {
-    if (!req.user) {
-        res.redirect('/');
-    }
-    next();
-});
-
-profileRouter.all('/settings', function (req, res, next) {
-    if (!req.user) {
-        res.redirect('/');
-    }
-    next();
 });
 
 profileRouter.get('/settings', function (req, res) {

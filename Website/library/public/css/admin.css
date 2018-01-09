@@ -1,0 +1,39 @@
+.photo {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid rgb(201, 168, 168);
+    border-radius: 5px;
+    box-shadow: 0 3px 5px #ddd;
+    }
+    .photo h2 {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 200;
+    }
+    .photo img { height: 250px; width: 250px; }
+    .list {
+        display: inline-block;
+        margin: 5px;
+        width: 230px;
+        height: 125px;
+        padding: 10px;
+        border: 1px solid grey;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgb(29, 13, 13);
+    }
+    .list p {
+        font-size: 14px;
+    }
+    
+    header {
+        margin: 0 auto;
+        padding: 55px;
+        text-align: center;
+    }
+
+    body {
+        background-color: rgb(200, 223, 204);
+        font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }

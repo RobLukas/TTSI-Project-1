@@ -6,30 +6,9 @@ var ObjectId = require('mongodb').ObjectID;
 
 var url = "mongodb://zolwik:yolo123@ds113915.mlab.com:13915/gallery";
 
-adminRouter.all('/panel', function(req, res, next){
+adminRouter.use(function (req, res, next) {
     if(!req.user || !req.user.isAdmin){
-        res.redirect('/');
-    }
-    next();
-});
-
-adminRouter.all('/panel/create', function(req, res, next){
-    if(!req.user){
-        res.redirect('/admin');
-    }
-    next();
-});
-
-adminRouter.all('/panel/create/add', function(req, res, next){
-    if(!req.user){
-        res.redirect('/admin');
-    }
-    next();
-});
-
-adminRouter.all('/panel/delete/:_id', function(req, res, next){
-    if(!req.user){
-        res.redirect('/admin');
+        return res.redirect('/');
     }
     next();
 });
@@ -43,15 +22,6 @@ adminRouter.get('/panel', function(req, res){
             });
         });
     });
-});
-
-adminRouter.post('/signIn', passport.authenticate('local', {
-    failureRedirect: '/'
-}), function (req, res) {
-    if(!req.user.isAdmin) {
-        console.log("er");
-    }
-    res.redirect('/admin/panel');
 });
 
 adminRouter.get('/panel/create', function (req, res) {
@@ -102,7 +72,7 @@ adminRouter.get('/panel/logout', function (req, res) {
     req.session.destroy();
     req.logout();
     console.log('Logout success');
-    res.redirect('/');
+    return res.redirect('/');
 });
 
 module.exports = adminRouter;

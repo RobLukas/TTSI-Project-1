@@ -4,16 +4,19 @@ html
         title #{title}
         link(rel='stylesheet', href='/css/style.css')
     body
-        h1 #{title}
+        header
+            h1 #{title}
         #photo
             each photos in photo
                 .photo
                     h2 #{photos.name}
-                    image(src=photos.path)
-                    p
-                        a(href="/auth/profile/photos/delete/" + photos._id) Usuń
-
+                    div.container
+                        a(href="/auth/profile/photos/delete/" + photos._id)
+                            image.image1(src=photos.path)
+                            div.overlay
+                                div.text Usuń
         p
-            a(href="/auth/profile/photos/add") Dodaj zdjęcie
-        p
-            a(href="/auth/profile") Back
+            a(href="/auth/profile/photos/add")
+                input.submit(type="button", value="Dodaje zdjęcie")
+            a.space(href="/auth/profile")
+                input.submit(type="button", value="Wstecz")
