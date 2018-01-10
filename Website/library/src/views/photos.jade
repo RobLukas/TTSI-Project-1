@@ -3,6 +3,7 @@ html
     head
         title #{title}
         link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet', href='/css/head.css')
     body
         header
             h1 #{title}
@@ -12,7 +13,7 @@ html
                     h2 #{photos.name}
                     div.container
                         a(href="/auth/profile/photos/delete/" + photos._id)
-                            image.image1(src=photos.path)
+                            image.image1(src=photos.path, alt="Photo", title=photos.name)
                             div.overlay
                                 div.text Usuń
         p

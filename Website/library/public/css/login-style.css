@@ -88,17 +88,6 @@
 .container .info span .fa {
   color: #EF3B3A;
 }
-body {
-  height: 100vh;
-  background: #8DC26F;
-  background: -webkit-linear-gradient(bottom,#8DC26F, #acb3f7);
-  background: -moz-linear-gradient(bottom,#8DC26F, #acb3f7);
-  background: -o-linear-gradient(bottom,#8DC26F, #acb3f7);
-  background: linear-gradient(to bottom,#8DC26F, #acb3f7);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
-}
 .form .setting {
   position: relative;
   z-index: 1;
